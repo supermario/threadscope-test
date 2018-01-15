@@ -1,0 +1,43 @@
+	Thu Jul 13 01:56 2017 Time and Allocation Profiling Report  (Final)
+
+	   threadscope-test-exe +RTS -N -N2 -p -RTS
+
+	total time  =        0.01 secs   (14 ticks @ 1000 us, 2 processors)
+	total alloc =   2,424,904 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE                      SRC                                               %time %alloc
+
+>>=.\       Control.Parallel.Strategies Control/Parallel/Strategies.hs:(213,31)-(215,68)   35.7   88.9
+MAIN        MAIN                        <built-in>                                         28.6    1.8
+fib         Main                        app/Main.hs:(10,1)-(15,21)                         21.4    7.3
+>>=         Control.Parallel.Strategies Control/Parallel/Strategies.hs:(213,3)-(215,68)     7.1    0.0
+main        Main                        app/Main.hs:(17,1)-(23,16)                          7.1    0.4
+CAF         GHC.IO.Handle.FD            <entire-module>                                     0.0    1.4
+
+
+                                                                                                                        individual      inherited
+COST CENTRE             MODULE                      SRC                                              no.     entries  %time %alloc   %time %alloc
+
+MAIN                    MAIN                        <built-in>                                        89          0   28.6    1.8   100.0  100.0
+ CAF                    GHC.Conc.Signal             <entire-module>                                  133          0    0.0    0.0     0.0    0.0
+ CAF                    GHC.IO.Encoding             <entire-module>                                  127          0    0.0    0.1     0.0    0.1
+ CAF                    GHC.IO.Encoding.Iconv       <entire-module>                                  125          0    0.0    0.0     0.0    0.0
+ CAF                    GHC.IO.Handle.FD            <entire-module>                                  117          0    0.0    1.4     0.0    1.4
+ CAF                    GHC.IO.Handle.Text          <entire-module>                                  115          0    0.0    0.0     0.0    0.0
+ CAF                    GHC.Event.KQueue            <entire-module>                                  102          0    0.0    0.0     0.0    0.0
+ CAF                    GHC.Event.Poll              <entire-module>                                   99          0    0.0    0.0     0.0    0.0
+ CAF                    GHC.Event.Thread            <entire-module>                                   98          0    0.0    0.1     0.0    0.1
+ CAF:$fApplicativeEval3 Control.Parallel.Strategies <no location info>                               137          0    0.0    0.0     0.0    0.0
+  return                Control.Parallel.Strategies Control/Parallel/Strategies.hs:212:3-15          187          1    0.0    0.0     0.0    0.0
+ CAF:main1              Main                        <no location info>                               176          0    0.0    0.0     0.0    0.0
+  main                  Main                        app/Main.hs:(17,1)-(23,16)                       178          1    0.0    0.0     0.0    0.0
+ main                   Main                        app/Main.hs:(17,1)-(23,16)                       179          0    7.1    0.4    71.4   96.6
+  fib                   Main                        app/Main.hs:(10,1)-(15,21)                       180      20875   21.4    7.3    64.3   96.2
+   rseq                 Control.Parallel.Strategies Control/Parallel/Strategies.hs:359:1-30          184      11022    0.0    0.0     0.0    0.0
+   runEval              Control.Parallel.Strategies Control/Parallel/Strategies.hs:202:1-55          181      10943    0.0    0.0    42.9   88.9
+    >>=                 Control.Parallel.Strategies Control/Parallel/Strategies.hs:(213,3)-(215,68)  182      21572    7.1    0.0    42.9   88.9
+     >>=.\              Control.Parallel.Strategies Control/Parallel/Strategies.hs:(213,31)-(215,68) 183      21682   35.7   88.9    35.7   88.9
+      pure              Control.Parallel.Strategies Control/Parallel/Strategies.hs:208:3-34          188      10838    0.0    0.0     0.0    0.0
+       pure.\           Control.Parallel.Strategies Control/Parallel/Strategies.hs:208:25-34         189      10937    0.0    0.0     0.0    0.0
+      rseq              Control.Parallel.Strategies Control/Parallel/Strategies.hs:359:1-30          185          0    0.0    0.0     0.0    0.0
+       rseq.\           Control.Parallel.Strategies Control/Parallel/Strategies.hs:359:23-30         186      10857    0.0    0.0     0.0    0.0
